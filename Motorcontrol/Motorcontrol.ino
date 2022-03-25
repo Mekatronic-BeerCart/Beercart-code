@@ -11,5 +11,6 @@ Serial.begin(9600);
 void loop() {
   // put your main code here, to run repeatedly:
 val = analogRead(analogPin);
-Serial.println(val); 
+analogWrite(outPutMotor,val/4); 
+Serial.println(val/4);
 }
