@@ -18,47 +18,48 @@ bool hallValue3;
 int DuCy = 0; 
 int analogPin = 3;
 
+int NI = 0;
 
 
 void Step1 (){//positiv A, negativ B
   digitalWrite(MotorQ1,HIGH);
   digitalWrite(MotorQ5,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ1, LOW);
   digitalWrite(MotorQ5, LOW);
 }
 void Step2 (){//positiv A, negativ C
   digitalWrite(MotorQ1,HIGH);
   digitalWrite(MotorQ6,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ1, LOW);
   digitalWrite(MotorQ6, LOW);
 }
 void Step3 (){//positiv B, negativ C
   digitalWrite(MotorQ2,HIGH);
   digitalWrite(MotorQ6,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ2, LOW);
   digitalWrite(MotorQ6, LOW);
 }
 void Step4 (){//positiv B, negativ A
   digitalWrite(MotorQ2,HIGH);
   digitalWrite(MotorQ4,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ2, LOW);
   digitalWrite(MotorQ4, LOW);
 }
 void Step5 (){//positiv B, negativ A
   digitalWrite(MotorQ3,HIGH);
   digitalWrite(MotorQ4,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ3, LOW);
   digitalWrite(MotorQ4, LOW);
 }
 void Step6 (){//positiv B, negativ A
   digitalWrite(MotorQ3,HIGH);
   digitalWrite(MotorQ5,HIGH); 
-  delayMicroseconds(DuCy);
+  delay(DuCy);
   digitalWrite(MotorQ3, LOW);
   digitalWrite(MotorQ5, LOW);
 }
@@ -69,7 +70,6 @@ void Step6 (){//positiv B, negativ A
 
 void setup() {
   // put your setup code here, to run once:
-
 }
 
 void loop() {
@@ -87,7 +87,8 @@ step1();
 
 
  
-DuCy = analogRead(analogPin);
+NI = analogRead(analogPin);
+DuCy = 1024-NI;
 if(DuCy > 0){
   Step1();
   Step2();
