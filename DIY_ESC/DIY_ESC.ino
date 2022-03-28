@@ -1,10 +1,13 @@
+//LIGGER PÅ PORT B
 int MotorQ1 = 11; //er motor winding "A" //gates som skal åbnes for. AKA mosfets.
 int MotorQ2 = 10; // motor winding "B"
 int MotorQ3 = 9;// motor Winding "C"
 
-int MotorQ4 = 3; //motor winding "A"
-int MotorQ5 = 5;// motor winding "B"
-int MotorQ6 = 6; // motor winding "C"
+
+//LIGGER PÅ PORT D 
+int MotorQ4 = 3; //motor winding "A" NEGATIV 
+int MotorQ5 = 5;// motor winding "B" NEGATIV 
+int MotorQ6 = 6; // motor winding "C" NEGATIV
 /*
   #define hall1 2 //definere hall sensornes pin out på arduinoen.
   #define hall2 4
@@ -22,46 +25,40 @@ int NI = 0;
 
 
 void Step1 () { //positiv A, negativ B
-  digitalWrite(MotorQ1, HIGH);
-  digitalWrite(MotorQ5, HIGH);
+  PORTB = B001000;
+ PORTD = B0001000;
   delay(DuCy);
-  digitalWrite(MotorQ1, LOW);
-  digitalWrite(MotorQ5, LOW);
+ 
+  
 }
 void Step2 () { //positiv A, negativ C
-  digitalWrite(MotorQ1, HIGH);
-  digitalWrite(MotorQ6, HIGH);
+  PORTB = B001000;
+ PORTD = B0100000;
   delay(DuCy);
-  digitalWrite(MotorQ1, LOW);
-  digitalWrite(MotorQ6, LOW);
+  
 }
 void Step3 () { //positiv B, negativ C
-  digitalWrite(MotorQ2, HIGH);
-  digitalWrite(MotorQ6, HIGH);
+  PORTB = B000100;
+PORTD = B0100000;
   delay(DuCy);
-  digitalWrite(MotorQ2, LOW);
-  digitalWrite(MotorQ6, LOW);
+
 }
 void Step4 () { //positiv B, negativ A
-  digitalWrite(MotorQ2, HIGH);
-  digitalWrite(MotorQ4, HIGH);
+ PORTB = B000010;
+ PORTD = B1000000;
   delay(DuCy);
-  digitalWrite(MotorQ2, LOW);
-  digitalWrite(MotorQ4, LOW);
 }
-void Step5 () { //positiv B, negativ A
-  digitalWrite(MotorQ3, HIGH);
-  digitalWrite(MotorQ4, HIGH);
+void Step5 () { //positiv C, negativ A
+  PORTB = B000010;
+ PORTD = B1000000;
   delay(DuCy);
-  digitalWrite(MotorQ3, LOW);
-  digitalWrite(MotorQ4, LOW);
+
 }
-void Step6 () { //positiv B, negativ A
-  digitalWrite(MotorQ3, HIGH);
-  digitalWrite(MotorQ5, HIGH);
+void Step6 () { //positiv C, negativ B
+PORTB = B000010;
+ PORTD = B0001000;
   delay(DuCy);
-  digitalWrite(MotorQ3, LOW);
-  digitalWrite(MotorQ5, LOW);
+
 }
 
 
@@ -70,6 +67,8 @@ void Step6 () { //positiv B, negativ A
 
 void setup() {
   // put your setup code here, to run once:
+  DDRB = B001110;
+  DDRD = B0001110;
 }
 
 void loop() {
