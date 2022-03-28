@@ -89,7 +89,7 @@ void loop() {
 
   NI = analogRead(analogPin);
   DuCy = 1024 - NI;
-  if (DuCy > 0) {
+  if (DuCy < 1024) {
     Step1();
     NI = analogRead(analogPin);
     DuCy = 1024 - NI;
