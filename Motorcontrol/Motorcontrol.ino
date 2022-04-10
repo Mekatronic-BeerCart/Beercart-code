@@ -14,3 +14,12 @@ val = analogRead(analogPin);
 analogWrite(outPutMotor,val/4); 
 Serial.println(val/4);
 }
+
+
+
+void Dostartup {
+check om nøgle i 
+startlys hvis nøgle i
+start
+  
+}
