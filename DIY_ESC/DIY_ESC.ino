@@ -19,44 +19,39 @@ int MotorQ6 = 6; // motor winding "C" NEGATIV
   bool hallValue3;
 */
 int DuCy = 0;
-int analogPin = 3;
+int analogPin = A0;
 
 int NI = 0;
 
 
 void Step1 () { //positiv A, negativ B
-  PORTB = B001000;
- PORTD = B0001000;
+ PORTD = B0010100;
   delay(DuCy);
  
   
 }
 void Step2 () { //positiv A, negativ C
-  PORTB = B001000;
- PORTD = B0100000;
+ PORTD = B0001100;
   delay(DuCy);
   
 }
 void Step3 () { //positiv B, negativ C
-  PORTB = B000100;
-PORTD = B0100000;
+PORTD = B0001010;
   delay(DuCy);
 
 }
 void Step4 () { //positiv B, negativ A
- PORTB = B000010;
- PORTD = B1000000;
+ PORTD = B0100010;
   delay(DuCy);
 }
 void Step5 () { //positiv C, negativ A
-  PORTB = B000010;
- PORTD = B1000000;
+
+ PORTD = B0100001;
   delay(DuCy);
 
 }
 void Step6 () { //positiv C, negativ B
-PORTB = B000010;
- PORTD = B0001000;
+ PORTD = B0010001;
   delay(DuCy);
 
 }
