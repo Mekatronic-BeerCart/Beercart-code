@@ -1,13 +1,14 @@
-//LIGGER PÅ PORT B
-int MotorQ1 = 11; //er motor winding "A" //gates som skal åbnes for. AKA mosfets.
-int MotorQ2 = 10; // motor winding "B"
-int MotorQ3 = 9;// motor Winding "C"
+//LIGGER PÅ PORT D
+//er motor winding "A"= PORTD = B00100000;
+//gates som skal åbnes for. AKA mosfets.
+// motor winding "B" = PORTD = B01000000;
+// motor Winding "C" = PORTD = B10000000;
 
 
 //LIGGER PÅ PORT D 
-int MotorQ4 = 3; //motor winding "A" NEGATIV 
-int MotorQ5 = 5;// motor winding "B" NEGATIV 
-int MotorQ6 = 6; // motor winding "C" NEGATIV
+ //motor winding "A" NEGATIV = PORTD = B00000100;
+// motor winding "B" NEGATIV  = PORTD = B00001000;
+ // motor winding "C" NEGATIV = PORTD = B00010000;
 /*
   #define hall1 2 //definere hall sensornes pin out på arduinoen.
   #define hall2 4
@@ -25,33 +26,33 @@ int NI = 0;
 
 
 void Step1 () { //positiv A, negativ B
- PORTD = B0010100;
+ PORTD = B00101000;
   delay(DuCy);
  
   
 }
 void Step2 () { //positiv A, negativ C
- PORTD = B0001100;
+ PORTD = B00110000;
   delay(DuCy);
   
 }
 void Step3 () { //positiv B, negativ C
-PORTD = B0001010;
+PORTD = B01010000;
   delay(DuCy);
 
 }
 void Step4 () { //positiv B, negativ A
- PORTD = B0100010;
+ PORTD = B01000100;
   delay(DuCy);
 }
 void Step5 () { //positiv C, negativ A
 
- PORTD = B0100001;
+ PORTD = B10000100;
   delay(DuCy);
 
 }
 void Step6 () { //positiv C, negativ B
- PORTD = B0010001;
+ PORTD = B10001000;
   delay(DuCy);
 
 }
@@ -63,7 +64,7 @@ void Step6 () { //positiv C, negativ B
 void setup() {
   // put your setup code here, to run once:
   DDRB = B001110;
-  DDRD = B0001110;
+  DDRD = B0111111;
 }
 
 void loop() {
@@ -83,7 +84,7 @@ void loop() {
 
   NI = analogRead(analogPin);
   DuCy = 1024 - NI;
-  if (DuCy < 1024) {
+  if (DuCy <= 1024) {
     Step1();
     NI = analogRead(analogPin);
     DuCy = 1024 - NI;
