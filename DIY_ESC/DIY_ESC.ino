@@ -63,8 +63,8 @@ void Step6 () { //positiv C, negativ B
 
 void setup() {
   // put your setup code here, to run once:
-  DDRB = B001110;
-  DDRD = B0111111;
+
+  DDRD = B11111111;
 }
 
 void loop() {
